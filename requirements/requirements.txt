@@ -1,0 +1,8 @@
+beautifulsoup4==4.12.3
+Django==4.2.16
+django-bootstrap-v5==1.0.11
+django-crispy-forms==2.3
+django-tables2==2.7.0
+django-formtools==2.5.1
+django-bootstrap-icons==0.9.0
+tabulate==0.9.0

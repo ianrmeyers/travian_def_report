@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load django_tables2 %}
+{% load bootstrap5 %}
+{% load bootstrap_icons %}
+
+{% include "timer.html" %}
+
+{% block content %}
+    <h2 class="text-center">
+        Incoming Attacks
+    </h2>
+    <div>
+        <button class="btn btn-success float-end" type="button">
+            <a href="/report/exportHistory">{% bs_icon 'download' size='1.5em' color='white' %}</a>
+        </button>
+    </div>
+    {% if filter %}
+        <form action="" method="get" class="form form-inline">
+            {% bootstrap_form filter.form layout='inline' %}
+            {% bootstrap_button 'filter' %}
+            <a href="/report/attacks" class="btn btn-default btn-danger">reset</a>
+        </form>
+    {% endif %}
+    {% render_table table 'django_tables2/bootstrap.html' %}
+
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="editModalLabel">Edit Notes</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" xmlns="http://www.w3.org/1999/html" action="{% url 'edit-notes' 0 %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    {{ form.media }}
+                    <button type="button" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </form>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const modal = new bootstrap.Modal(document.getElementById('editModal'), {
+          keyboard: false
+        });
+        console.log(modal);
+
+        const buttons = document.querySelectorAll('[data-bs-target="#editModal"]');
+        buttons.forEach(button => {
+          button.addEventListener('click', function() {
+            const recordId = button.getAttribute('data-id');
+            console.log(recordId);
+            var url = '{% url 'edit-notes' %}';
+            // document.getElementsByClassName('modal-body')[0].innerText = 'You clicked on record ' + recordId;
+            $.get(url, function(response) {
+                if (response === 'success') {
+                    document.getElementsByClassName('modal-body')[0].html = response.html;
+                }
+            })
+          });
+        });
+      });
+    </script>
+{% endblock content %}

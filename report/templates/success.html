@@ -1,0 +1,35 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <title>HTML Submitted</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <h1>Attacks Submitted Successfully</h1>-->
+<!--    <button type="button">-->
+<!--      <a href="/report">-->
+<!--          Upload More Incoming-->
+<!--      </a>-->
+<!--    </button>-->
+<!--    <button type="button">-->
+<!--      <a href="/report/attacks">-->
+<!--          View All Incoming-->
+<!--      </a>-->
+<!--    </button>-->
+<!--</body>-->
+<!--</html>-->
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <h1>Attacks Submitted Successfully!</h1>
+    <button class="btn btn-link" type="button">
+        <a href="/report">
+            Upload More Incoming
+        </a>
+    </button>
+    <button class="btn btn-link" type="button">
+        <a href="/report/attacks">
+            View All Incoming
+        </a>
+    </button>
+{% endblock content %}

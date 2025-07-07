@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+}
+
+.app-header {
+    background-color: rgb(14, 60, 135);
+}
+
+.app-title {
+    background-color: rgb(14, 60, 135);
+    color: white;
+    align-content: center;
+}
+
+.marginalized {
+    margin: 2% 10%;
+}
+
+.upload-box {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+
+    .upload-box-ta {
+        height: 25rem;
+        width: 50rem;
+    }
+}
+
+.upload-btn {
+    max-width: 10rem;
+    position: relative;
+    right: -22.75rem;
+    top: -0.5rem;
+}
+
+.form-control {
+    max-width: 9rem;
+}
+
+.form-inline {
+    display: flex;
+    justify-content: center;
+}
+
+/*# sourceMappingUrl=base.css.map */
